@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: demo-deployment
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   app: app-demo
+ template:
+  metadata:
+   labels:
+    app: app-demo
+  spec:
+   containers:
+   - name: py-micro-demo
+     image: payara-app-demo:v16
+     ports:
+     - containerPort: 8080
+     env:
+     - name: POD_NAME
+       valueFrom:
+        fieldRef:
+         fieldPath: metadata.name
+     args: 
+       - "--clustermode"
+       - "kubernetes"
+       - "--name"
+       - "k8s-$(POD_NAME)"
+       - "--clusterName"
+       - "minikube"
+       - "--deploy"
+       - "/opt/payara/deployments/app-demo.war"
+       - "--contextRoot"
+       - "/app-demo"
