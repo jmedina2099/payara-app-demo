@@ -24,7 +24,6 @@ class DoPost():
 				if sys.argv[0] == 'dopost.py':
 					sys.exit(0)
 			else:
-				print(ValueError)
 				print('FAIL')
 				if sys.argv[0] == 'dopost.py':
 					sys.exit(1)

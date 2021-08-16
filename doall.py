@@ -23,6 +23,8 @@ class DoAll:
 		try:
 			result = subprocess.check_output(batcmd, shell=True)
 			print(result)
+			if result == '[]':
+				print('SUCESS')
 			print('OK')
 			if sys.argv[0] == 'doall.py':
 				sys.exit(0)
