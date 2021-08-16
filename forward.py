@@ -1,4 +1,10 @@
 import os
+import sys
 
-print('*********************** FORWARD PORT          *********************************')
-os.spawnl(os.P_DETACH,'C:\\Users\\jarosas\\Desktop\\kubectl\\kubectl.exe','kubectl', 'port-forward', 'service/demo-service', '8080:80')
+portDef = 8080
+argsn = len(sys.argv)
+if argsn > 1:
+	portDef = int(sys.argv[1])
+
+print('*********************** FORWARD PORT ('+str(portDef)+')          *********************************')
+os.spawnl(os.P_DETACH,'C:\\Users\\jarosas\\Desktop\\kubectl\\kubectl.exe','kubectl', 'port-forward', 'service/demo-service', str(portDef)+':80')

@@ -19,8 +19,20 @@ class DoPost():
 			print('POST '+url)
 			prepared = requests.post(url, json=payload, headers=headers)
 			self.pretty_print_POST(prepared)
+			if prepared.status_code == 201:
+				print('OK')
+				if sys.argv[0] == 'dopost.py':
+					sys.exit(0)
+			else:
+				print(ValueError)
+				print('FAIL')
+				if sys.argv[0] == 'dopost.py':
+					sys.exit(1)
 		except ConnectionError as ValueError:
 			print(ValueError)
+			print('FAIL')
+			if sys.argv[0] == 'dopost.py':
+				sys.exit(1)
 
 	def pretty_print_POST(self,req):
 		print(req)
