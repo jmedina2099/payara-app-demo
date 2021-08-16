@@ -10,6 +10,7 @@ class DoAll:
 			self.do_curl_get(url)
 
 	def do_curl_get(self,url):
+		print('');
 		print('GET '+url)
 		os.system('curl '+url)
 		print('')
