@@ -13,7 +13,7 @@ spec:
     app: app-demo
   spec:
    containers:
-   - name: py-micro-demo
+   - name: deployment-app-demo
      image: payara-app-demo:v16
      ports:
      - containerPort: 8080
