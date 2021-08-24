@@ -7,4 +7,4 @@ if argsn > 1:
 	portDef = int(sys.argv[1])
 
 print('*********************** FORWARD PORT ('+str(portDef)+')          *********************************')
-os.spawnl(os.P_WAIT,'C:\\kubectl\\kubectl.exe','kubectl', 'port-forward', 'service/demo-service', str(portDef)+':80')
+os.spawnl(os.P_DETACH,'C:\\kubectl\\kubectl.exe','kubectl', 'port-forward', 'service/demo-service', str(portDef)+':80')
